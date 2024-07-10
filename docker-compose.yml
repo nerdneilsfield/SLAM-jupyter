@@ -1,0 +1,17 @@
+version: '3'
+networks:
+  proxy:
+    external: true
+services:
+  jup1:
+    image: slam-jupyter
+    # command: jupyterhub -f /opt/jupyter/config/jupyterhub_config.py 
+    networks:
+      - proxy
+    ports:
+      - "54329:8888"
+    environment:
+      - JUPYTER_TOKEN="bFR95iuq7Nwp5PRxvS8TJ8PsvJghHCeg"
+    volumes:
+      - ./conf/jup1:/opt/jupyter/config
+      - ./work/jup1:/home/jovyan/work
